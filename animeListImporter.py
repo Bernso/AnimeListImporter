@@ -1,9 +1,14 @@
-import json
-import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+try:
+    import json
+    import time
+    from selenium import webdriver
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.chrome.service import Service
+    from selenium.webdriver.chrome.options import Options
+except ImportError as e:
+    input(f"Import Error: {e}")
+    quit()
+    
 
 def open_links_and_handle_captcha(json_file_path):
     # Load JSON file
@@ -64,6 +69,7 @@ def open_links_and_handle_captcha(json_file_path):
         finally:
             driver.execute_script("window.close()")
 
+    print("FINISHED!")
     driver.quit()
 
 if __name__ == "__main__":
